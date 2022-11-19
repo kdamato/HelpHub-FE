@@ -13,15 +13,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={
-              <Home />
+              <About />
             }
           />
           <Route
-            path="/about"
+            path="/home"
             element={
-              <About />
+              <Home />
             }
           />
           <Route path="/customer-login" element={<LoginCustomer />} />

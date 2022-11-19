@@ -9,7 +9,7 @@ function Navigation() {
         <Container>
           <Navbar.Brand href="/home">HelpHub</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/about">About Us</Nav.Link>
+            <Nav.Link href="/">About Us</Nav.Link>
             <Nav.Link href="/provider-signup">Sign Up Provider</Nav.Link>
             <Nav.Link href="/customer-signup">Sign up Customer</Nav.Link>
             <Nav.Link href="/provider-login">Log in Provider</Nav.Link>
