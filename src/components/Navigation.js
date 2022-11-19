@@ -7,13 +7,12 @@ function Navigation() {
     <>
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="/home">HelpHub</Navbar.Brand>
+          <Navbar.Brand href="/">HelpHub</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">About Us</Nav.Link>
+            <Nav.Link href="/about">About Us</Nav.Link>
             <Nav.Link href="/provider-signup">Sign Up Provider</Nav.Link>
             <Nav.Link href="/customer-signup">Sign up Customer</Nav.Link>
-            <Nav.Link href="/provider-login">Log in Provider</Nav.Link>
-            <Nav.Link href="/customer-login">Log in Customer</Nav.Link>
+            <Nav.Link href="/login">Log in</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

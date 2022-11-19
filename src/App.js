@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About"
 import Home from "./pages/Home"
-import LoginCustomer from "./pages/LoginCustomer"
-import LoginProvider from "./pages/LoginProvider"
+import Login from "./pages/Login"
 import './App.css';
 
 function App() {
@@ -15,26 +14,20 @@ function App() {
           <Route
             path="/"
             element={
-              <About />
-            }
-          />
-          <Route
-            path="/home"
-            element={
               <Home />
             }
           />
-          <Route path="/customer-login" element={<LoginCustomer />} />
           <Route
-            path="/customer-login"
+            path="/about"
             element={
-              <LoginCustomer />
+              <About />
             }
           />
+          <Route path="/login" element={<Login />} />
           <Route
-            path="/provider-login"
+            path="/login"
             element={
-              <LoginProvider />
+              <Login />
             }
           />
         </Routes>
