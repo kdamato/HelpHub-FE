@@ -19,7 +19,7 @@ function SubmitForm(props) {
 
   const handleSubmit = async (e) => {
     //LOGIN
-    if (props.route === "login") {
+    if (props.route === "Log In") {
       e.preventDefault();
       const response = await fetch(
         "http://localhost:5050/memberAccounts/login",
@@ -34,7 +34,7 @@ function SubmitForm(props) {
       const data = await response.json();
 
       if (response.status === 200) {
-        setCurrentUser(data.user);
+        setCurrentUser(data.credentials);
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
@@ -43,7 +43,7 @@ function SubmitForm(props) {
     }
 
     //SIGNUP
-    else if (props.route === "signup") {
+    else if (props.route === "Sign Up") {
       e.preventDefault();
       const response = await fetch("http://localhost:5050/memberAccounts", {
         method: "POST",
@@ -53,9 +53,10 @@ function SubmitForm(props) {
         body: JSON.stringify(credentials),
       });
       const data = await response.json();
+      console.log(data);
 
       if (response.status === 200) {
-        setCurrentUser(data.user);
+        setCurrentUser(data.credentials);
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
