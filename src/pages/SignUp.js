@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-function Login(props) {
+function SignUp() {
   const navigate = useNavigate();
   // const { setCurrentUser } = useContext(CurrentUser);
   // const [errorMessage, setErrorMessage] = useState(null);
@@ -56,6 +56,22 @@ function Login(props) {
         <div>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Name" />
+            <Form.Text className="text-muted">
+              Please enter your name here.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Age</Form.Label>
+            <Form.Control type="text" placeholder="Age" />
+            <Form.Text className="text-muted">
+              Please enter your age here
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control type="text" placeholder="Email" />
             <Form.Text className="text-muted">
@@ -65,7 +81,21 @@ function Login(props) {
 
           <Form.Group className="mb-3" controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control type="text" placeholder="Password" />
+            <Form.Text className="text-muted">
+              Please enter your password here
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Location</Form.Label>
+            <Form.Control type="text" placeholder="State" />
+            <Form.Text className="text-muted">
+              Please enter your state here
+            </Form.Text>
+          </Form.Group>
+
+        <Form.Group>
             <DropdownButton
               as={ButtonGroup}
               key={"Primary"}
@@ -79,8 +109,9 @@ function Login(props) {
               <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
             </DropdownButton>
           </Form.Group>
+
           <Button variant="primary" type="submit">
-            Login
+            Sign Up
           </Button>
         </Form>
         </div>
@@ -88,4 +119,4 @@ function Login(props) {
     </div>
   );
   }
-export default Login;
+export default SignUp;
