@@ -66,7 +66,7 @@ function SubmitForm(props) {
   };
 
   //Update dropdown button display based on selection
-  const [title, setTitle] = useState("User type");
+  const [title, setTitle] = useState("User Type");
   const handleSelection = (event) => {
     event.preventDefault();
     setTitle(event.target.textContent);
@@ -78,7 +78,16 @@ function SubmitForm(props) {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="text" placeholder="Email" />
+            <Form.Control
+              type="text"
+              placeholder="Email"
+              name="email"
+              required
+              value={credentials.email}
+              onChange={(e) => {
+                setCredentials({ ...credentials, email: e.target.value });
+              }}
+            />
             <Form.Text className="text-muted">
               Please enter your email here.
             </Form.Text>
@@ -86,7 +95,16 @@ function SubmitForm(props) {
 
           <Form.Group className="mb-3" controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+              value={credentials.password}
+              onChange={(e) => {
+                setCredentials({ ...credentials, password: e.target.value });
+              }}
+            />
             <DropdownButton
               as={ButtonGroup}
               key={"Primary"}
