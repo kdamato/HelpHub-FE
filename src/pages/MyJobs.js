@@ -29,7 +29,7 @@ function MyJobs() {
 
   return (
     
-  <JobCard data={jobs}/>
+  <JobCard name={jobs.name}/>
   );
 }
 
