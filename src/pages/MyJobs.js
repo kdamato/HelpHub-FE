@@ -6,21 +6,30 @@ import JobCard from '../components/JobCard';
 
 function MyJobs() {
     
-    const jobId = '637c1aa0c4139f713a3823b6'
-    const [ job, setJob ] = useState(null)
+
+    
+    const postedBy = "637c3d8097fbe76fe758267f"
+    const [ jobs, setJobs ] = useState('')
+
 
     useEffect(()=> {
         const fetchData = async() => {
-            const response = await fetch(`http://localhost:5050/jobs/${jobId}`)
+            const response = await fetch(`http://localhost:5050/jobs/postedBy/${postedBy}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
             const resData = await response.json()
-            setJob(resData)
-            console.log(resData)
+            setJobs(resData)
+            console.log(response)
         }
         fetchData()
     },[])
 
   return (
-    <JobCard data={job}/>
+    <div> YUH </div>
+  //  <JobCard data={member}/>
   );
 }
 
