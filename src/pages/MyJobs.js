@@ -8,7 +8,7 @@ function MyJobs() {
     
 
     
-    const postedBy = "637c3d8097fbe76fe758267f"
+    const postedBy = "636ef2d721314dfbaf223069"
     const [ jobs, setJobs ] = useState('')
 
 
@@ -22,14 +22,14 @@ function MyJobs() {
             })
             const resData = await response.json()
             setJobs(resData)
-            console.log(response)
+            console.log(resData)
         }
         fetchData()
     },[])
 
   return (
-    <div> YUH </div>
-  //  <JobCard data={member}/>
+    
+  <JobCard data={jobs}/>
   );
 }
 

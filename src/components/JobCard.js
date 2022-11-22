@@ -13,7 +13,7 @@ function JobCard(props) {
       <Card.Body>
         <Card.Title>{props.data.name}</Card.Title>
         <Card.Text>
-          Category: {props.data.category}
+          Category: {}
         </Card.Text>
         <Button variant="primary" onClick={handleChatRequest}>Chat</Button>
       </Card.Body>
