@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import JobCard from '../components/JobCard';
+import JobCard from '../components/JobCard'
+import Navigation from '../components/Navigation'
 
 
 
@@ -9,7 +10,8 @@ function MyJobs() {
 
     
     const postedBy = "636ef2d721314dfbaf223069"
-    const [ jobs, setJobs ] = useState('')
+    const [ jobs, setJobs ] = useState([])
+  
 
 
     useEffect(()=> {
@@ -22,15 +24,26 @@ function MyJobs() {
             })
             const resData = await response.json()
             setJobs(resData)
-            console.log(resData)
         }
         fetchData()
     },[])
 
+const children = jobs.map((job)=>{
+    console.log(job)
+    return(
+        <JobCard data={job}/>
+    )
+        
+    }
+)
+
   return (
     
-  <JobCard name={jobs.name}/>
+    <div>
+        <Navigation/>
+        {children}
+        
+    </div>
   );
-}
-
-export default MyJobs;
+  }
+export default MyJobs
