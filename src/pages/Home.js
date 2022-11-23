@@ -5,7 +5,7 @@ import HomeCleaning from "../images/HomeCleaningHH.jpg";
 import LandScaping from "../images/landscapingHH.jpg";
 import PetCare from "../images/PetCareHH.jpg";
 import Moving from "../images/MovingHH.jpg";
-import "../homepage.css";
+// import "../homepage.css";
 
 
 function Home(props) {
@@ -18,21 +18,9 @@ function Home(props) {
     <div>
     <div className="top-Home-Page">
           <img src={LandScaping} alt="Landscaping" id="landscaping" />
-          <h2 id="landscapingText" className="categoryText">
-              Landscaping
-          </h2>
           <img src={HomeCleaning} alt="Home Cleaning" id="homecleaning" />
-          <h2 id="homeCleaningText" className="categoryText">
-              Home Cleaning
-          </h2>
           <img src={PetCare} alt="Landscaping" id="petcare" />
-          <h2 id="PetCareText" className="categoryText">
-              Pet Care
-          </h2>
           <img src={Moving} alt="Landscaping" id="moving" />
-          <h2 id="HelpMovingText" className="categoryText">
-              Help Moving
-          </h2>
           <h1 className="Title">Select a Search</h1>
           <div class="form-group">
               <label for=""></label>

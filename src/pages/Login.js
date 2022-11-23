@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-function Login(props) {
+function Login() {
   const navigate = useNavigate();
   // const { setCurrentUser } = useContext(CurrentUser);
   // const [errorMessage, setErrorMessage] = useState(null);
@@ -79,7 +79,7 @@ function Login(props) {
               <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
             </DropdownButton>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" id="submit">
             Login
           </Button>
         </Form>
