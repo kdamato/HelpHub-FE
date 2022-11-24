@@ -14,9 +14,8 @@ function Navigation() {
   // if (currentUser) {
   //   let loginActions = <p>Logged in as {currentUser.email}</p>;
   // }
-
   const loginActions = currentUser ? (
-    !(<p>Logged in as {currentUser.email}</p>)
+    <p>Logged in as {currentUser.email}</p>
   ) : (
     <>
       <Nav.Link href="/login">Log in</Nav.Link>

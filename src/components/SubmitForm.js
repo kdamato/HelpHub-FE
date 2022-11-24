@@ -34,11 +34,12 @@ function SubmitForm(props) {
       const data = await response.json();
 
       if (response.status === 200) {
-        setCurrentUser(data.credentials);
+        setCurrentUser(data.user);
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
         setErrorMessage(data.message);
+        console.log(errorMessage);
       }
     }
 
@@ -105,7 +106,7 @@ function SubmitForm(props) {
                 setCredentials({ ...credentials, password: e.target.value });
               }}
             />
-            <DropdownButton
+            {/* <DropdownButton
               as={ButtonGroup}
               key={"Primary"}
               id={`dropdown-Primarys-Primary`}
@@ -116,7 +117,7 @@ function SubmitForm(props) {
                 Customer{" "}
               </Dropdown.Item>
               <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
-            </DropdownButton>
+            </DropdownButton> */}
           </Form.Group>
           <Button variant="primary" type="submit">
             {props.route}
