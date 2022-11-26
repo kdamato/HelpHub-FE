@@ -13,9 +13,7 @@ function Navigation() {
   ) : (
     <>
       <Nav.Link href="/login">Log in</Nav.Link>
-      <Nav.Link href="/provider-signup">Sign Up Provider</Nav.Link>
-      <Nav.Link href="/customer-signup">Sign up Customer</Nav.Link>
-      <Nav.Link href="/">Log out</Nav.Link>
+      <Nav.Link href="/signup">Sign Up</Nav.Link>
     </>
   );
   return (
