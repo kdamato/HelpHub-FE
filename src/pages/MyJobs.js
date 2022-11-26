@@ -1,16 +1,26 @@
 import { useEffect, useState } from 'react';
 import JobCard from '../components/JobCard'
 import Navigation from '../components/Navigation'
+import io from 'socket.io-client'
+
+//connect socket: watch for backend API
+const socket = io.connect('http://localhost:')
 
 
 
-
-function MyJobs() {
+function MyJobs(CurrentUser) {
     
 
+    const [ username, setusername ] = useState('')
+    const [room, setRoom ] = useState('')
+    const [ showChat, setShowChat ]= useState(false)
     
     const postedBy = "636ef2d721314dfbaf223069"
     const [ jobs, setJobs ] = useState([])
+    const [ jobid, setJobId ] = useState('')
+
+
+
   
 
 
@@ -28,12 +38,14 @@ function MyJobs() {
         fetchData()
     },[])
 
+
+
+
 const children = jobs.map((job)=>{
     console.log(job)
     return(
         <JobCard data={job}/>
-    )
-        
+    ) 
     }
 )
 
