@@ -34,11 +34,12 @@ function SubmitForm(props) {
       const data = await response.json();
 
       if (response.status === 200) {
-        setCurrentUser(data.credentials);
+        setCurrentUser(data.user);
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
         setErrorMessage(data.message);
+        console.log(errorMessage);
       }
     }
 
@@ -66,7 +67,7 @@ function SubmitForm(props) {
   };
 
   //Update dropdown button display based on selection
-  const [title, setTitle] = useState("User type");
+  const [title, setTitle] = useState("User Type");
   const handleSelection = (event) => {
     event.preventDefault();
     setTitle(event.target.textContent);
@@ -78,7 +79,16 @@ function SubmitForm(props) {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="text" placeholder="Email" />
+            <Form.Control
+              type="text"
+              placeholder="Email"
+              name="email"
+              required
+              value={credentials.email}
+              onChange={(e) => {
+                setCredentials({ ...credentials, email: e.target.value });
+              }}
+            />
             <Form.Text className="text-muted">
               Please enter your email here.
             </Form.Text>
@@ -86,8 +96,17 @@ function SubmitForm(props) {
 
           <Form.Group className="mb-3" controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-            <DropdownButton
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+              value={credentials.password}
+              onChange={(e) => {
+                setCredentials({ ...credentials, password: e.target.value });
+              }}
+            />
+            {/* <DropdownButton
               as={ButtonGroup}
               key={"Primary"}
               id={`dropdown-Primarys-Primary`}
@@ -98,7 +117,7 @@ function SubmitForm(props) {
                 Customer{" "}
               </Dropdown.Item>
               <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
-            </DropdownButton>
+            </DropdownButton> */}
           </Form.Group>
           <Button variant="primary" type="submit">
             {props.route}
