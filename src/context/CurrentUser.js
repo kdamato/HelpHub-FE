@@ -3,7 +3,8 @@ import { createContext, useState, useEffect } from "react";
 export const CurrentUser = createContext();
 
 function CurrentUserProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState('');
+  console.log(currentUser);
   useEffect(() => {
     const getLoggedInUser = async () => {
       let response = await fetch(
