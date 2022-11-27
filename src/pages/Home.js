@@ -5,10 +5,13 @@ import HomeCleaning from "../images/HomeCleaningHH.jpg";
 import LandScaping from "../images/landscapingHH.jpg";
 import PetCare from "../images/PetCareHH.jpg";
 import Moving from "../images/MovingHH.jpg";
+import { useContext } from 'react'
+import { CurrentUser } from '../context/CurrentUser';
 // import "../homepage.css";
 
 
 function Home(props) {
+
   return (
     <div>
       <Container>

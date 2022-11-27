@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import Form from "react-bootstrap/Form"
 
 
-
+/**@TODO fix selection lagging */
 
 const Jobs= ()=>{
 
@@ -24,7 +24,6 @@ const Jobs= ()=>{
             const response = await fetch(url)
             const resData = await response.json()
             setAllJobs(resData)
-
         }
         fetchData()
     },[url])
@@ -84,19 +83,14 @@ const children = allJobs.map((job)=>{
 }
 )
 
-
-
-
-
-
 return(
     <div>
         <Navigation/>
         Search by Category:
-        <Form>
-           <Form.Select onClickCapture={handleSelection}  aria-label="Default select example">
+        <Form onChange={handleSelection}>
+           <Form.Select  aria-label="Default select example">
                 <option>Open this select menu</option>
-                <option value="landscaping" >Landscaping</option>
+                <option  value="landscaping" >Landscaping</option>
                 <option value="homeCleaning">Home Cleaning</option>
                 <option value="petCare">Pet Care</option>
             </Form.Select> 

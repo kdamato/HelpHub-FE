@@ -1,14 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import JobCard from '../components/JobCard'
 import Navigation from '../components/Navigation'
+import { CurrentUser } from '../context/CurrentUser';
 
 function MyJobs() {
-    
+    const {currentUser} = useContext(CurrentUser)
     const [ jobs, setJobs ] = useState([])
+    
+    console.log(currentUser._id)
 
+   
+    
+    
     useEffect(()=> {
         const fetchData = async() => {
-            const response = await fetch(`http://localhost:5050/jobs/postedby/636ef2d721314dfbaf223069`, {
+            const response = await fetch(`http://localhost:5050/jobs/postedby/${currentUser._id}` , {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -18,7 +24,7 @@ function MyJobs() {
             setJobs(resData)
         }
         fetchData()
-    },[])
+    },[currentUser._id])
 
 
 const children = jobs.map((job)=>{
