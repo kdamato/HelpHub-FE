@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-body {
+html, body {
   background-color: $primary-color;
   font-family: $font-stack;
   line-height: 1;
@@ -22,6 +22,15 @@ img {
 
 a {
   text-decoration: none;
+}
+
+.location_dropdown {
+  height: 200px;
+  overflow: overlay;
+}
+
+.location_dropdown_button {
+  width: 10em;
 }
 
 .App {
@@ -39,15 +48,17 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: $primary-color;
+    background-color: white;
 
     ul {
       display: flex;
       list-style-type: none;
+      background-color: $light-color;
     }
 
     li {
       padding: 15px;
+      background-color: $light-color;
     }
 
     a {
@@ -55,7 +66,7 @@ a {
     }
 
     a:hover {
-      color: $light-color;
+      color: $hover-color;
     }
   }
 
@@ -65,12 +76,6 @@ a {
     align-items: center;
     justify-content: center;
     margin-top: 30px;
-
-    // img {
-    //   width: 60px;
-    //   height: 60px;
-    //   border-radius: 10%;
-    // }
 
     h1 {
       font-size: 50px;

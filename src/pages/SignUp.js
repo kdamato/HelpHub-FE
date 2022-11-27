@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { CurrentUser } from "../context/CurrentUser";
+import LocationDropdown from "../components/LocationDropdown"
 
 function SignUp() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function SignUp() {
       if (response.status === 200) {
         setCurrentUser(data.credentials);
         localStorage.setItem("token", data.token);
-        navigate("/");
+        navigate("/login");
       } else {
         setErrorMessage(data.message);
       }
@@ -99,13 +100,7 @@ function SignUp() {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Location</Form.Label>
-            <Form.Control type="text" placeholder="State" />
-            <Form.Text className="text-muted">
-              Please enter your state here
-            </Form.Text>
-          </Form.Group>
+        <LocationDropdown />
 
         <Form.Group>
             <DropdownButton

@@ -11,13 +11,10 @@
   padding: 8px 20px;
   margin: 3px;
 }
-.btn-secondary:hover, .btn-primary:hover {
-  transform: scale(0.8);
-}
 
 .btn-primary {
-  background-color: #fff23d;
-  color: text-color-picker(#fff23d);
+  background-color: #fff89b;
+  color: text-color-picker(#fff89b);
 }
 
 .btn-secondary {
@@ -38,8 +35,8 @@
   padding: 0;
 }
 
-body {
-  background-color: #ffef0a;
+html, body {
+  background-color: #fff568;
   font-family: Trebuchet MS, Arial, sans-serif;
   line-height: 1;
 }
@@ -53,12 +50,21 @@ a {
   text-decoration: none;
 }
 
+.location_dropdown {
+  height: 200px;
+  overflow: overlay;
+}
+
+.location_dropdown_button {
+  width: 10em;
+}
+
 .App {
-  background-color: #ffef0a;
-  color: text-color-picker(#ffef0a);
+  background-color: #fff568;
+  color: text-color-picker(#fff568);
 }
 .App body {
-  background-color: #ffef0a;
+  background-color: #fff568;
   font-family: Trebuchet MS, Arial, sans-serif;
   line-height: 1;
 }
@@ -66,20 +72,22 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffef0a;
+  background-color: white;
 }
 .App nav ul {
   display: flex;
   list-style-type: none;
+  background-color: #ffffff;
 }
 .App nav li {
   padding: 15px;
+  background-color: #ffffff;
 }
 .App nav a {
-  color: text-color-picker(#ffef0a);
+  color: text-color-picker(#fff568);
 }
 .App nav a:hover {
-  color: #ffffff;
+  color: purple;
 }
 .App-content {
   height: 100%;

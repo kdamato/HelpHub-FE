@@ -9,6 +9,7 @@ import clean from "../images/clean.png";
 import dog from "../images/dog.png";
 import move from "../images/move.png";
 import mow from "../images/mow.png";
+import LocationDropdown from "../components/LocationDropdown"
 
 
 
@@ -31,14 +32,7 @@ function Home(props) {
           <img src={mow} alt="mow" id="mow" />
           <h1 className="Title">Select a Search</h1>
           <div class="form-group">
-              <label for=""></label>
-              <select class="custom-select" name="" id="">
-                  <option selected>Select A Location</option>
-                  {/* {props.loggedInUser.locations.map((location) => {
-                      return <option>{location}</option>;
-                  })} */}
-                  <button formAction="submit"></button>
-              </select>
+              <LocationDropdown />
           </div>
         </div>
     </div>
