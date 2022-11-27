@@ -4,12 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { CurrentUser } from "../context/CurrentUser";
 
-
 function Navigation() {
   const { currentUser } = useContext(CurrentUser);
   const loginActions = currentUser ? (
-    <p id="log-in-credentials">Logged in as {currentUser.email}</p> &&
-    <Nav.Link href="/profile">{currentUser.email}</Nav.Link>
+    <Nav.Link href="/profile">Welcome, {currentUser.name}</Nav.Link>
   ) : (
     <>
       <Nav.Link href="/login">Log in</Nav.Link>
