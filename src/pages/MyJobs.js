@@ -2,6 +2,10 @@ import { useEffect, useState, useContext } from 'react';
 import JobCard from '../components/JobCard'
 import Navigation from '../components/Navigation'
 import { CurrentUser } from '../context/CurrentUser';
+import Stack from 'react-bootstrap/Stack'
+import Card from 'react-bootstrap/Card'
+
+
 
 function MyJobs() {
     const {currentUser} = useContext(CurrentUser)
@@ -30,14 +34,24 @@ function MyJobs() {
 const children = jobs.map((job)=>{
     console.log(job)
     return(
-        <JobCard data={job}/>
+        <Card style={{margin:'auto'}}>
+            <JobCard data={job}/>
+
+        </Card>
     ) 
     }
 )
   return (
     <div>
+        <div style={{marginBottom:'2rem'}}>
         <Navigation/>
+        </div>
+        <div style={{marginBottom:'2rem'}}>
+        <Stack direction='horizontal' gap={3}>
         {children}
+
+        </Stack>
+        </div>
     </div>
   );
 }

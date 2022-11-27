@@ -19,12 +19,20 @@ function JobCard(props) {
           }
       }
 
+const hideChat=()=>{
+    setShowChat(false)
+}
+
   return (
     <div>
       {showChat ? 
-        <Chat socket={socket} username={currentUser.name} room={props.id}/>
+      <Card style={{ width: '20em', height: '30rem',justifyContent:'center'}}>
+        <Chat socket={socket} username={currentUser.name} room={currentUser._id}/>
+        <Button variant="warning" onClick={hideChat}>Close Chat</Button>
+
+      </Card>
         :
-     <Card style={{ width: '18rem' }}>
+     <Card style={{ width: '20rem', height: '30rem', }}>
        <Card.Img variant="top" src="holder.js/100px180" />
        <Card.Body>
          <Card.Title>{props.data.name}</Card.Title>
@@ -34,7 +42,7 @@ function JobCard(props) {
          <Card.Text>
            Location: {props.data.location}
          </Card.Text>
-        <Button variant="primary" onClick={handleChatRequest}>Chat</Button>
+        <Button variant="warning" onClick={handleChatRequest}>Chat</Button>
        </Card.Body>
      </Card>
      }
