@@ -21,16 +21,16 @@ function SignUp() {
   });
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      const response = await fetch("http://localhost:5050/memberAccounts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      });
-      const data = await response.json();
-      console.log(data);
+    e.preventDefault();
+    const response = await fetch("http://localhost:5050/memberAccounts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    });
+    const data = await response.json();
+    console.log(data);
 
       if (response.status === 200) {
         setCurrentUser(data.credentials);
@@ -55,54 +55,78 @@ function SignUp() {
           <Navigation />
         </Stack>
         <div>
-        <Form route="Sign Up" onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Name" />
-            <Form.Text className="text-muted">
-              Please enter your name here.
-            </Form.Text>
-          </Form.Group>
+          <Form route="Sign Up" onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Name"
+                name="name"
+                required
+                value={credentials.name}
+                onChange={(e) => {
+                  setCredentials({ ...credentials, name: e.target.value });
+                }}
+              />
+              <Form.Text className="text-muted">
+                Please enter your name here.
+              </Form.Text>
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Age</Form.Label>
-            <Form.Control type="text" placeholder="Age" />
-            <Form.Text className="text-muted">
-              Please enter your age here
-            </Form.Text>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Age</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Age"
+                name="age"
+                required
+                value={credentials.age}
+                onChange={(e) => {
+                  setCredentials({ ...credentials, age: e.target.value });
+                }}
+              />
+              <Form.Text className="text-muted">
+                Please enter your age here
+              </Form.Text>
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control               
-              type="text"
-              placeholder="Email"
-              name="email"
-              required
-              value={credentials.email}
-              onChange={(e) => {setCredentials({ ...credentials, email: e.target.value });}}  />
-            <Form.Text className="text-muted">
-              Please enter your email here.
-            </Form.Text>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Email"
+                name="email"
+                required
+                value={credentials.email}
+                onChange={(e) => {
+                  setCredentials({ ...credentials, email: e.target.value });
+                }}
+              />
+              <Form.Text className="text-muted">
+                Please enter your email here.
+              </Form.Text>
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formGroupPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control               
-              type="password"
-              placeholder="Password"
-              name="password"
-              required
-              value={credentials.password}
-              onChange={(e) => {setCredentials({ ...credentials, password: e.target.value });}} />
-            <Form.Text className="text-muted">
-              Please enter your password here
-            </Form.Text>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formGroupPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+                value={credentials.password}
+                onChange={(e) => {
+                  setCredentials({ ...credentials, password: e.target.value });
+                }}
+              />
+              <Form.Text className="text-muted">
+                Please enter your password here
+              </Form.Text>
+            </Form.Group>
 
         <LocationDropdown />
 
-        <Form.Group>
+            {/* <Form.Group>
             <DropdownButton
               as={ButtonGroup}
               key={"Primary"}
@@ -115,15 +139,15 @@ function SignUp() {
               </Dropdown.Item>
               <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
             </DropdownButton>
-          </Form.Group>
+          </Form.Group> */}
 
-          <Button variant="primary" type="submit">
-            Sign Up
-          </Button>
-        </Form>
+            <Button variant="primary" type="submit">
+              Sign Up
+            </Button>
+          </Form>
         </div>
       </Container>
     </div>
   );
-  }
+}
 export default SignUp;

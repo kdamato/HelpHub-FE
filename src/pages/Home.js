@@ -12,8 +12,8 @@ import mow from "../images/mow.png";
 import LocationDropdown from "../components/LocationDropdown"
 
 
-
 function Home(props) {
+
   return (
     <div>
       <Container>
