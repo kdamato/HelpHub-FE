@@ -30,5 +30,3 @@ function CurrentUserProvider({ children }) {
 }
 
 export default CurrentUserProvider;
-
-export default CurrentUserProvider;

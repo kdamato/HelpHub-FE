@@ -22,9 +22,8 @@ function Home(props) {
           <img src={PetCare} alt="Landscaping" id="petcare" />
           <img src={Moving} alt="Landscaping" id="moving" />
           <h1 className="Title">Select a Search</h1>
-          <div class="form-group">
-              <label for=""></label>
-              <select class="custom-select" name="" id="">
+          <div className="form-group">
+              <select className="custom-select" name="" id="">
                   <option selected>Select A Location</option>
                   {/* {props.loggedInUser.locations.map((location) => {
                       return <option>{location}</option>;

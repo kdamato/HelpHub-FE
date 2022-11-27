@@ -2,9 +2,6 @@ import Navigation from "../components/Navigation"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import React, { useEffect, useState } from 'react'
-import Dropdown from "react-bootstrap/esm/Dropdown"
-import ButtonGroup from "react-bootstrap/esm/ButtonGroup";
-import DropdownButton from "react-bootstrap/esm/DropdownButton";
 import Form from "react-bootstrap/Form"
 
 
