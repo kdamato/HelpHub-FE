@@ -8,44 +8,44 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { CurrentUser } from "../context/CurrentUser";
 
 function SignUp() {
   const navigate = useNavigate();
-  // const { setCurrentUser } = useContext(CurrentUser);
-  // const [errorMessage, setErrorMessage] = useState(null);
-  // const [credentials, setCredentials] = useState({
-  //   email: "",
-  //   password: "",
-  // });
+  const { setCurrentUser } = useContext(CurrentUser);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
-      // const response = await fetch(
-      //   "http://localhost:5050/memberAccounts/login",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(credentials),
-      //   }
-      // );
-      // const data = await response.json();
+      const response = await fetch("http://localhost:5050/memberAccounts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+      const data = await response.json();
+      console.log(data);
 
-      // if (response.status === 200) {
-      //   setCurrentUser(data.credentials);
-      //   localStorage.setItem("token", data.token);
+      if (response.status === 200) {
+        setCurrentUser(data.credentials);
+        localStorage.setItem("token", data.token);
         navigate("/");
-    //   } else {
-    //     setErrorMessage(data.message);
-    //   }
-    }
+      } else {
+        setErrorMessage(data.message);
+      }
+  };
 
-    const [title, setTitle] = useState("User type");
-    const handleSelection = (event) => {
-      event.preventDefault();
-      setTitle(event.target.textContent);
-    };
+  //Update dropdown button display based on selection
+  const [title, setTitle] = useState("User Type");
+  const handleSelection = (event) => {
+    event.preventDefault();
+    setTitle(event.target.textContent);
+  };
 
   return (
     <div>
@@ -54,7 +54,7 @@ function SignUp() {
           <Navigation />
         </Stack>
         <div>
-        <Form onSubmit={handleSubmit}>
+        <Form route="Sign Up" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Name</Form.Label>
             <Form.Control type="text" placeholder="Name" />
@@ -73,7 +73,13 @@ function SignUp() {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="text" placeholder="Email" />
+            <Form.Control               
+              type="text"
+              placeholder="Email"
+              name="email"
+              required
+              value={credentials.email}
+              onChange={(e) => {setCredentials({ ...credentials, email: e.target.value });}}  />
             <Form.Text className="text-muted">
               Please enter your email here.
             </Form.Text>
@@ -81,7 +87,13 @@ function SignUp() {
 
           <Form.Group className="mb-3" controlId="formGroupPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="text" placeholder="Password" />
+            <Form.Control               
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+              value={credentials.password}
+              onChange={(e) => {setCredentials({ ...credentials, password: e.target.value });}} />
             <Form.Text className="text-muted">
               Please enter your password here
             </Form.Text>
