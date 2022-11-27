@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Navigation from "../components/Navigation";
 import Stack from "react-bootstrap/Stack";
 import { useNavigate } from "react-router-dom";
-
+import ProfileTile from "../components/ProfileTile";
 
 function Profile() {
     const navigate = useNavigate();
@@ -19,10 +19,11 @@ function Profile() {
       <Container>
         <Stack gap={3}>
           <Navigation />
+          <ProfileTile/>
         </Stack>
     <div>
     <div className="top-Home-Page">
-          <div class="form-group">
+             <div class="form-group">
             <button onClick={clearStorage}>Log out</button>
           </div>
         </div>
