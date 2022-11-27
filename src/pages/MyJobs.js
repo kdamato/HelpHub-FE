@@ -52,5 +52,4 @@ const children = jobs.map((job)=>{
   );
 }
 
-
-export default MyJobs
+export default MyJobs;
