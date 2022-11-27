@@ -11,11 +11,7 @@ function MyJobs() {
     const {currentUser} = useContext(CurrentUser)
     const [ jobs, setJobs ] = useState([])
     
-    console.log(currentUser._id)
-
-   
-    
-    
+    console.log(currentUser._id)  
     useEffect(()=> {
         const fetchData = async() => {
             const response = await fetch(`http://localhost:5050/jobs/postedby/${currentUser._id}` , {
