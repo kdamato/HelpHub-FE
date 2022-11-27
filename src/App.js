@@ -6,46 +6,28 @@ import Login from "./pages/Login"
 import MyJobs from "./pages/MyJobs";
 import Jobs from "./pages/Jobs"
 import './App.css';
+import SignUp from "./pages/SignUp";
+import CurrentUserProvider from "./context/CurrentUser";
+import Profile from "./pages/Profile"
+
 
 function App() {
   return (
-    <div className="App">
-
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home />
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <About />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Login />
-            }
-          />
-          <Route
-            path="/searchjobs/"
-            element={
-              <Jobs />
-            }
-          />
-          <Route
-            path="/myjobs"
-            element={
-              <MyJobs />
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <CurrentUserProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/signup" element={<SignUp />} /> 
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/searchjobs/" element={<Jobs />}/>
+            <Route path="/myjobs" element={<MyJobs />}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </CurrentUserProvider>
   );
 }
 

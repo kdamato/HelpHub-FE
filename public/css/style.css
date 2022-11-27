@@ -1,0 +1,203 @@
+#landscaping {
+  position: relative;
+  top: 6em;
+  right: 0em;
+  width: 15em;
+}
+#homecleaning {
+  position: relative;
+  top: 2em;
+  right: 5em;
+  width: 15em;
+}
+#petcare {
+  position: relative;
+  top: 6em;
+  right: 13em;
+  width: 15em;
+}
+#moving {
+  position: relative;
+  left: 40em;
+  top: -10em;
+  width: 15em;
+}
+
+.box {
+  max-width: 1100px;
+  padding: 0 30px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.btn-secondary, .btn-primary {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin: 3px;
+}
+.btn-secondary:hover, .btn-primary:hover {
+  transform: scale(0.8);
+}
+
+.btn-primary {
+  background-color: #fff23d;
+  color: text-color-picker(#fff23d);
+}
+
+.btn-secondary {
+  background-color: #000000;
+  color: text-color-picker(#000000);
+}
+
+.box {
+  max-width: 1100px;
+  padding: 0 30px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffef0a;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  line-height: 1;
+}
+
+img {
+  border-radius: 10%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  background-color: #ffef0a;
+  color: text-color-picker(#ffef0a);
+}
+.App body {
+  background-color: #ffef0a;
+  font-family: Trebuchet MS, Arial, sans-serif;
+  line-height: 1;
+}
+.App nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffef0a;
+}
+.App nav ul {
+  display: flex;
+  list-style-type: none;
+}
+.App nav li {
+  padding: 15px;
+}
+.App nav a {
+  color: text-color-picker(#ffef0a);
+}
+.App nav a:hover {
+  color: #ffffff;
+}
+.App-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.App-content img {
+  width: 50%;
+}
+.App-content h1 {
+  font-size: 50px;
+  line-height: 1.2;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.my-1 {
+  margin: 1rem 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.py-1 {
+  padding: 1rem 0;
+}
+
+.m-2 {
+  margin: 2rem;
+}
+
+.my-2 {
+  margin: 2rem 0;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.m-3 {
+  margin: 3rem;
+}
+
+.my-3 {
+  margin: 3rem 0;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+.py-3 {
+  padding: 3rem 0;
+}
+
+.m-4 {
+  margin: 4rem;
+}
+
+.my-4 {
+  margin: 4rem 0;
+}
+
+.p-4 {
+  padding: 4rem;
+}
+
+.py-4 {
+  padding: 4rem 0;
+}
+
+.m-5 {
+  margin: 5rem;
+}
+
+.my-5 {
+  margin: 5rem 0;
+}
+
+.p-5 {
+  padding: 5rem;
+}
+
+.py-5 {
+  padding: 5rem 0;
+}
+
+/*# sourceMappingURL=style.css.map */
