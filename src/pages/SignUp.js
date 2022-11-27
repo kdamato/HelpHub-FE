@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { CurrentUser } from "../context/CurrentUser";
+import LocationDropdown from "../components/LocationDropdown"
 
 function SignUp() {
   const navigate = useNavigate();
@@ -31,13 +32,13 @@ function SignUp() {
     const data = await response.json();
     console.log(data);
 
-    if (response.status === 200) {
-      setCurrentUser(data.credentials);
-      localStorage.setItem("token", data.token);
-      navigate("/");
-    } else {
-      setErrorMessage(data.message);
-    }
+      if (response.status === 200) {
+        setCurrentUser(data.credentials);
+        localStorage.setItem("token", data.token);
+        navigate("/login");
+      } else {
+        setErrorMessage(data.message);
+      }
   };
 
   //Update dropdown button display based on selection
@@ -123,22 +124,7 @@ function SignUp() {
               </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Location</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="State"
-                name="location"
-                required
-                value={credentials.location}
-                onChange={(e) => {
-                  setCredentials({ ...credentials, location: e.target.value });
-                }}
-              />
-              <Form.Text className="text-muted">
-                Please enter your state here
-              </Form.Text>
-            </Form.Group>
+        <LocationDropdown />
 
             {/* <Form.Group>
             <DropdownButton
