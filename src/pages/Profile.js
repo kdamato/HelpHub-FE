@@ -3,16 +3,15 @@ import Navigation from "../components/Navigation";
 import Stack from "react-bootstrap/Stack";
 import { useNavigate } from "react-router-dom";
 
-
 function Profile() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function clearStorage() {
-        // Clear localStorage token 
-        localStorage.clear();
-        navigate("/");
-        window.location.reload(false);
-      }
+  function clearStorage() {
+    // Clear localStorage token
+    localStorage.clear();
+    navigate("/");
+    window.location.reload(false);
+  }
 
   return (
     <div>
@@ -20,17 +19,15 @@ function Profile() {
         <Stack gap={3}>
           <Navigation />
         </Stack>
-    <div>
-    <div className="top-Home-Page">
-          <div class="form-group">
-            <button onClick={clearStorage}>Log out</button>
+        <div>
+          <div className="top-Home-Page">
+            <div class="form-group">
+              <button onClick={clearStorage}>Log out</button>
+            </div>
           </div>
         </div>
-    </div>
       </Container>
     </div>
-
   );
-
 }
 export default Profile;
