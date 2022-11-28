@@ -1,6 +1,3 @@
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
@@ -26,12 +23,15 @@ function LocationDropdown(props) {
         name="location"
         value={props.job}
         onChange={(e) => {
-          props.setCredentials({
-            ...props.credentials,
-            location: e.target.value,
-          });
-          props.setJob({ ...props.job, location: e.target.value });
-          setTitle(e.target.value);
+          if (props.route === "signup") {
+            props.setCredentials({
+              ...props.credentials,
+              location: e.target.value,
+            });
+          } else {
+            props.setJob({ ...props.job, location: e.target.value });
+            setTitle(e.target.value);
+          }
         }}
       >
         <option>{title}</option>
