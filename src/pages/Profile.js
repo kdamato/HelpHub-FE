@@ -2,9 +2,17 @@ import Container from "react-bootstrap/Container";
 import Navigation from "../components/Navigation";
 import Stack from "react-bootstrap/Stack";
 import { useNavigate } from "react-router-dom";
+import { setImageColor, createImageFromInitials } from "../components/Utilities"
+import { CurrentUser } from "../context/CurrentUser";
+import { useContext } from "react";
 
 
 function Profile() {
+    const { currentUser } = useContext(CurrentUser);
+
+    const name = currentUser.name;
+    const imgSrc = "";
+
     const navigate = useNavigate();
 
     function clearStorage() {
@@ -21,7 +29,17 @@ function Profile() {
           <Navigation />
         </Stack>
     <div>
-    <div className="top-Home-Page">
+        <img
+            className="profile_pic"
+			id='preview'
+			src={
+				imgSrc.length <= 0
+					? createImageFromInitials(500, name, setImageColor())
+					: imgSrc
+			}
+			alt='profile-pic'
+		/>
+        <div className="top-Home-Page">
           <div class="form-group">
             <button onClick={clearStorage}>Log out</button>
           </div>

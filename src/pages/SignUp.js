@@ -1,23 +1,26 @@
 import Container from "react-bootstrap/Container";
 import Navigation from "../components/Navigation";
 import Stack from "react-bootstrap/Stack";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { CurrentUser } from "../context/CurrentUser";
-import LocationDropdown from "../components/LocationDropdown"
+import LocationDropdown from "../components/LocationDropdown";
 
 function SignUp() {
   const navigate = useNavigate();
   const { setCurrentUser } = useContext(CurrentUser);
   const [errorMessage, setErrorMessage] = useState(null);
+  /**
+   * @TODO : Possibly change useState from credentials to data and same in jobform
+   */
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
+    name: "",
+    age: Number,
+    location: "",
   });
 
   const handleSubmit = async (e) => {
@@ -32,13 +35,13 @@ function SignUp() {
     const data = await response.json();
     console.log(data);
 
-      if (response.status === 200) {
-        setCurrentUser(data.credentials);
-        localStorage.setItem("token", data.token);
-        navigate("/login");
-      } else {
-        setErrorMessage(data.message);
-      }
+    if (response.status === 200) {
+      setCurrentUser(data.credentials);
+      localStorage.setItem("token", data.token);
+      navigate("/login");
+    } else {
+      setErrorMessage(data.message);
+    }
   };
 
   //Update dropdown button display based on selection
@@ -124,23 +127,10 @@ function SignUp() {
               </Form.Text>
             </Form.Group>
 
-        <LocationDropdown />
-
-            {/* <Form.Group>
-            <DropdownButton
-              as={ButtonGroup}
-              key={"Primary"}
-              id={`dropdown-Primarys-Primary`}
-              title={title}
-            >
-              <Dropdown.Item onClick={handleSelection}>
-                {" "}
-                Customer{" "}
-              </Dropdown.Item>
-              <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
-            </DropdownButton>
-          </Form.Group> */}
-
+            <LocationDropdown
+              credentials={credentials}
+              setCredentials={setCredentials}
+            />
             <Button variant="primary" type="submit">
               Sign Up
             </Button>
