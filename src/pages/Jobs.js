@@ -13,11 +13,11 @@ const Jobs= ()=>{
     const [title, setTitle] = useState('');
     const [endpoint, setEndpoint] = useState('')
    
-   
 
     const url = `http://localhost:5050/jobs/` + endpoint
     
 
+    
  useEffect(()=> {
     
     const fetchData = async() => {
