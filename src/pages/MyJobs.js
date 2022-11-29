@@ -30,23 +30,20 @@ function MyJobs() {
 const children = jobs.map((job)=>{
     console.log(job)
     return(
-        <Card style={{margin:'auto'}}>
+    
             <JobCard data={job}/>
-
-        </Card>
     ) 
     }
 )
   return (
     <div>
         <div style={{marginBottom:'2rem'}}>
-        <Navigation/>
+            <Navigation/>
         </div>
-        <div style={{marginBottom:'2rem'}}>
-        <Stack direction='horizontal' gap={3}>
-        {children}
-
-        </Stack>
+        <div style={{overflowX: 'scroll', margin:'4rem'}}>
+            <Stack direction='horizontal' gap={3}>
+            {children}
+            </Stack>
         </div>
     </div>
   );
