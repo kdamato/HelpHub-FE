@@ -10,6 +10,7 @@ function JobCard(props) {
     const [ showChat, setShowChat ]= useState(false)
     const [ jobAccepted, setJobAccepted ] = useState(false)
     const {currentUser} = useContext(CurrentUser)
+    const [ provider, setProvider ] = useState('')
    
 
 
@@ -17,9 +18,16 @@ function JobCard(props) {
     useEffect(()=>{
       if(props.data.provider !== undefined){
         console.log(props.data.id, props.data.provider)
+        const fetchProviderName = async()=>{
+          const response = await fetch(`http://localhost:5050/memberaccounts/${props.data.provider}`)
+          const data = await response.json()
+          setProvider(data)
+          console.log(data)
+          }
+          fetchProviderName()
           setJobAccepted(true)
       }
-    },)
+    },[])
 
     const handleChatRequest = (e)=>{
       e.preventDefault()
@@ -60,14 +68,19 @@ const hideChat=()=>{
          <Card.Text>
            Job Description:{props.data.description}
          </Card.Text>
-         <Card.Text>
-           Job Accepted By: {props.data.provider}
-         </Card.Text>
-       </Card.Body>
+         
+       
        <div>
-        {jobAccepted ? <Button variant="warning" onClick={handleChatRequest}>Chat</Button> : <p> no workers yet</p>}
+        {jobAccepted ? 
+        <div>
+          <Card.Text>
+           Job Accepted By: {provider.name}
+         </Card.Text>
+         <Button variant="warning" onClick={handleChatRequest}>Chat</Button> 
+         </div>
+          : <p> no workers yet</p>}
        </div>
-
+</Card.Body>
          </div>
      </Card>
      }
