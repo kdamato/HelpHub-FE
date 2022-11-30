@@ -5,7 +5,7 @@ import { CurrentUser } from "../context/CurrentUser";
 function Chat(props) {
   const { currentUser } = useContext(CurrentUser);
   const [currentMessage, setCurrentMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(null);
 
   /**
    *
@@ -23,27 +23,24 @@ function Chat(props) {
         }
       );
       const resData = await response.json();
-      const { messages } = resData;
-      console.log(...resData);
-      console.log(messages);
-      console.log({ ...resData }.messages);
-      setMessages(resData);
-      console.log(messages);
+      const { messages: resMessages } = resData;
+      setMessages(resMessages);
     };
 
     fetchData();
   }, [props.room]);
 
   const sendMessage = async (e) => {
-    e.preventDefault();
     if (currentMessage !== "") {
       const userInput = {
-        author: currentUser.name,
-        messages: messages,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
+        messages: {
+          author: currentUser.name,
+          message: currentMessage,
+          time:
+            new Date(Date.now()).getHours() +
+            ":" +
+            new Date(Date.now()).getMinutes(),
+        },
       };
       await fetch(`http://localhost:5050/chats/${props.room}`, {
         method: "PUT",
@@ -54,6 +51,7 @@ function Chat(props) {
       });
 
       setMessages(userInput);
+      console.log(userInput);
       setCurrentMessage("");
     }
   };
@@ -65,10 +63,7 @@ function Chat(props) {
       </div>
       <div className="chat-body">
         <div className="message-container">
-          {messages.map((messageContent) => {
-            {
-              console.log(messageContent.messages);
-            }
+          {messages?.map((messageContent) => {
             return (
               <div
                 className="message"
@@ -78,7 +73,7 @@ function Chat(props) {
               >
                 <div>
                   <div className="message-content">
-                    <p>{messageContent.messages}</p>
+                    <p>{messageContent.message}</p>
                   </div>
                   <div className="message-meta">
                     <p id="time">{messageContent.time}</p>
@@ -97,12 +92,17 @@ function Chat(props) {
           placeholder="Hey.."
           onChange={(e) => {
             setCurrentMessage(e.target.value);
+
+            {
+              console.log(currentMessage);
+            }
           }}
           onKeyPress={(e) => {
-            e.key === "Enter" && sendMessage();
+            e.key === "Enter" &&
+              sendMessage().then(window.location.reload(false));
           }}
         />
-        <button onClick={sendMessage}>&#9658;</button>
+        {/* <button onClick={sendMessage}>&#9658;</button> */}
       </div>
     </div>
   );
