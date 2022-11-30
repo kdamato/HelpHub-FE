@@ -113,7 +113,7 @@ const Jobs = () => {
                         <option value="movingHelp">Help Moving</option>
                     </Form.Select>
                 </Form>
-                {children}
+                <div className="jobChildren">{children}</div>
             </Container>
         </div>
     );
