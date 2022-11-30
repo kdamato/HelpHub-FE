@@ -9,6 +9,9 @@ function JobCard(props) {
     const socket = io.connect("http://localhost:3000/myjobs");
     const [showChat, setShowChat] = useState(false);
     const { currentUser } = useContext(CurrentUser);
+    // const [Img, setImg] = useState("");
+
+    // const src = Img;
 
     const handleChatRequest = (e) => {
         e.preventDefault();
@@ -21,6 +24,21 @@ function JobCard(props) {
     const hideChat = () => {
         setShowChat(false);
     };
+
+    // const handleDefaultImg = (e) => {
+    //     console.log(props.data.category);
+    //     if (props.data.category === "homeCleaning") {
+    //       setImg("");
+    //     } else if (props.data.category === "petCare") {
+    //       setImg("https://www.akc.org/wp-content/uploads/2018/01/bulldog-walk.jpg");
+    //     } else if (props.data.category === "landscaping") {
+    //       setImg("");
+    //     } else {
+    //       setImg("");
+    //       console.log("not found");
+    //     }
+    //   };
+    
 
     return (
         <div>
@@ -43,7 +61,7 @@ function JobCard(props) {
                 </Card>
             ) : (
                 <Card style={{ width: "20rem", height: "30rem" }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Img variant="top" src= "https://previews.123rf.com/images/ratoca/ratoca1304/ratoca130400199/18967240-help-me-message.jpg" />
                     <Card.Body>
                         <Card.Title>{props.data.name}</Card.Title>
                         <Card.Text>Category: {props.data.category}</Card.Text>
