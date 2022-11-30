@@ -1,10 +1,13 @@
 import Navigation from "../components/Navigation";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import Container from "react-bootstrap/Container";
+
+import { CurrentUser } from "../context/CurrentUser";
+
 import "../jobs.css";
 
 
@@ -12,6 +15,7 @@ import "../jobs.css";
 
 const Jobs = () => {
 
+    const { currentUser } = useContext(CurrentUser);
     const [allJobs, setAllJobs] = useState([]);
     const [title, setTitle] = useState("");
     const [endpoint, setEndpoint] = useState("");
@@ -26,6 +30,21 @@ const Jobs = () => {
         };
         fetchData();
     }, [url]);
+
+    const handleRequestWork = (jobId) => {
+        try {
+            fetch(`http://localhost:5050/jobs/${jobId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ provider: currentUser }),
+            });
+        } catch (err) {
+            console.log(err);
+            console.log(jobId);
+        }
+    };
 
     const handleSelection = (e) => {
         setTitle(e.target.value);
@@ -42,7 +61,15 @@ const Jobs = () => {
             console.log("not found");
         }
     };
+
     const children = allJobs.map((job) => {
+        const getName = () => {
+            const response = fetch(
+                `http://localhost:5050/jobs/${job.postedBy}`
+            );
+            const data = response.json();
+            return data.name;
+        };
         if (job.notCompleted) {
             return (
                 <div key={job.id}>
@@ -50,14 +77,17 @@ const Jobs = () => {
                         <Card.Img variant="top" src="holder.js/100px180" />
                         <Card.Body>
                             <Card.Title>{job.name}</Card.Title>
-                            <span className="category">
-                                <Card.Text>
-                                    Job Description: {job.category}
-                                </Card.Text>
-                            </span>
-                            <Card.Text>requested by: {job.postedBy}</Card.Text>
+                            <Card.Text>
+                                Job Description: {job.category}
+                            </Card.Text>
+                            <Card.Text>requested by: {getName}</Card.Text>
                             <Card.Text>Location: {job.location}</Card.Text>
-                            <Button variant="primary">Request Work</Button>
+                            <Button
+                                variant="primary"
+                                onClick={() => handleRequestWork(job._id)}
+                            >
+                                Request Work
+                            </Button>
                         </Card.Body>
                     </Card>
                 </div>
@@ -80,13 +110,13 @@ const Jobs = () => {
                         <option value="landscaping">Landscaping</option>
                         <option value="homeCleaning">Home Cleaning</option>
                         <option value="petCare">Pet Care</option>
+                        <option value="movingHelp">Help Moving</option>
                     </Form.Select>
                 </Form>
-                <div className="jobChildren">{children}</div>
+                {children}
             </Container>
         </div>
     );
 
-  
 };
 export default Jobs;
