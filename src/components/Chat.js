@@ -1,30 +1,63 @@
-import React, { useEffect, useState } from 'react'
+
+import React, { useContext, useEffect, useState } from 'react'
 import '../Chat.css'
+import { CurrentUser } from '../context/CurrentUser'
 
-function Chat({socket, username, room, }){
+function Chat(props){
+const { currentUser }= useContext(CurrentUser)
 const [ currentMessage, setCurrentMessage ] = useState('')
-const [ messageList, setMessageList ] = useState([])
+const [ messageList, setMessageList ] = useState([''])
 
-const sendMessage = async () => {
-    if (currentMessage !== ""){
-        const messageData = {
-            room: room,
-            author: username,
-            message: currentMessage,
+
+/**
+ * 
+ * Get messages from db by fetching  chats/:_id route
+ */
+useEffect(()=>{
+console.log(messageList)
+    console.log(props)
+    const fetchData= async ()=>{
+    const response = await fetch(`http://localhost:5050/chats/${props.room}`,{
+        method: "GET",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    const resData = await response.json()
+    console.log(messageList)
+    setMessageList([...messageList, resData])
+    console.log(messageList)
+}
+
+fetchData()
+}, [props.room])
+
+
+
+
+
+const sendMessage = async ()=>{
+
+
+        if (currentMessage !== ""){
+        const userInput = {
+            author: currentUser.name,
+            messages: messageList,
             time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes()
         }
+        await fetch(`http://localhost:5050/chats/${props.room}`,{
+            method: "PUT",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(userInput)
+        })
 
-        await socket.emit("send_message", messageData)
-        setMessageList((list)=>[...list,messageData])
+        setMessageList(userInput)
         setCurrentMessage("")
         }
-    }
-
-    useEffect(() => {
-        socket.on("receive_message", (data)=>{
-            setMessageList((list)=>[...list,data])
-        })
-    }, [socket])
+    
+  }
 
   
 
@@ -37,7 +70,7 @@ const sendMessage = async () => {
                 <div className='message-container'>
                 {messageList.map((messageContent)=>{
                     return (
-                    <div className='message' id={username === messageContent.author ? "you" : "other"}>
+                    <div className='message' id={currentUser.name === messageContent.author ? "you" : "other"}>
                         <div>
                             <div className='message-content'> 
                                 <p>{messageContent.message}</p>

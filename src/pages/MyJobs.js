@@ -39,17 +39,17 @@ function MyJobs() {
     },[currentUser._id])
 
 
-const myJobs = jobs.map((job)=>{
+const myJobs = jobs.map((job, i)=>{
     console.log(job)
     return(
-            <JobCard data={job}/>
+            <JobCard data={job} key={i}/>
     ) 
     }
 )
-const toDo = doJobs.map((job)=>{
+const toDo = doJobs.map((job, i)=>{
     console.log(job)
     return(
-            <ToDoJobCard data={job}/>
+            <ToDoJobCard data={job}  key={i}/>
     ) 
     }
 )

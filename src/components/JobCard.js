@@ -1,12 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { CurrentUser } from '../context/CurrentUser';
-import io from 'socket.io-client'
+
 import { useState, useContext, useEffect } from 'react'
 import Chat from './Chat';
 
 function JobCard(props) {
-    const socket = io.connect('http://localhost:3000/myjobs')
     const [ showChat, setShowChat ]= useState(false)
     const [ jobAccepted, setJobAccepted ] = useState(false)
     const {currentUser} = useContext(CurrentUser)
@@ -16,8 +15,7 @@ function JobCard(props) {
 
 
     useEffect(()=>{
-      if(props.data.provider !== undefined){
-        console.log(props.data.id, props.data.provider)
+      if(props.data.provider){
         const fetchProviderName = async()=>{
           const response = await fetch(`http://localhost:5050/memberaccounts/${props.data.provider}`)
           const data = await response.json()
@@ -31,9 +29,8 @@ function JobCard(props) {
 
     const handleChatRequest = (e)=>{
       e.preventDefault()
-      if (currentUser.name !== "" && props.data.id !== ""){
-        console.log(props.data.id)
-          socket.emit('join_room', props.data.id)
+      if (currentUser.name !== "" && props.data._id){
+        console.log(props.data._id)
           setShowChat(true)
           }
       }
@@ -48,7 +45,7 @@ const hideChat=()=>{
     <div>
       {showChat ? 
       <Card style={{ width: '20em', height: '30rem',justifyContent:'center'}}>
-        <Chat socket={socket} username={currentUser.name} room={currentUser._id}/>
+        <Chat username={currentUser.name} room={props.data._id}/>
         <Button variant="warning" onClick={hideChat}>Close Chat</Button>
 
       </Card>
