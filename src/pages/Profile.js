@@ -6,8 +6,8 @@ import { setImageColor, createImageFromInitials } from "../components/Utilities"
 import { CurrentUser } from "../context/CurrentUser";
 import { useContext } from "react";
 
-
 function Profile() {
+
     const { currentUser } = useContext(CurrentUser);
 
     const name = currentUser.name;
@@ -15,12 +15,13 @@ function Profile() {
 
     const navigate = useNavigate();
 
-    function clearStorage() {
-        // Clear localStorage token 
-        localStorage.clear();
-        navigate("/");
-        window.location.reload(false);
-      }
+
+  function clearStorage() {
+    // Clear localStorage token
+    localStorage.clear();
+    navigate("/");
+    window.location.reload(false);
+  }
 
   return (
     <div>
@@ -28,6 +29,7 @@ function Profile() {
         <Stack gap={3}>
           <Navigation />
         </Stack>
+
     <div>
         <img
             className="profile_pic"
@@ -42,13 +44,11 @@ function Profile() {
         <div className="top-Home-Page">
           <div class="form-group">
             <button onClick={clearStorage}>Log out</button>
+
           </div>
         </div>
-    </div>
       </Container>
     </div>
-
   );
-
 }
 export default Profile;

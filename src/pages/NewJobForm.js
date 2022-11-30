@@ -8,11 +8,17 @@ import FileUpload from "../components/FileUpload";
 import LocationDropdown from "../components/LocationDropdown";
 import Navigation from "../components/Navigation";
 
+import { useContext } from "react";
+import { CurrentUser } from "../context/CurrentUser";
+
+
 function NewJobForm(props) {
+  const { currentUser } = useContext(CurrentUser);
   const navigate = useNavigate();
   /**
    * @TODO : possibly change name of usestate from job to data so it doesn't need to call two different (setState) in locationdropdown
    */
+
   const [job, setJob] = useState({
     name: "",
     category: "",
@@ -20,6 +26,7 @@ function NewJobForm(props) {
     postedBy: "",
     description: "",
   });
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +41,12 @@ function NewJobForm(props) {
       const data = await response.json();
       setJob(data);
       console.log(data);
+
       navigate("/myjobs");
     } catch (error) {
       console.log(error);
     }
+
   };
 
   //Update dropdown button display based on selection
@@ -45,6 +54,7 @@ function NewJobForm(props) {
   const handleSelection = (event) => {
     event.preventDefault();
     setTitle(event.target.textContent);
+
   };
 
   return (
@@ -103,9 +113,17 @@ function NewJobForm(props) {
             </Form.Text>
           </Form.Group>
           <LocationDropdown job={job} setJob={setJob} />
-          <FileUpload />
-          <Button variant="primary" type="submit">
-            Ask for Help!
+          
+          {/* <FileUpload /> */}
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => {
+              setJob({ ...job, postedBy: currentUser });
+            }}
+          >
+            Submit
+
           </Button>
         </Form>
       </Container>

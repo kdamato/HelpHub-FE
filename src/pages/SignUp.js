@@ -130,6 +130,7 @@ function SignUp() {
             <LocationDropdown
               credentials={credentials}
               setCredentials={setCredentials}
+              route="signup"
             />
             <Button variant="primary" type="submit">
               Sign Up

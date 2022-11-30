@@ -7,9 +7,11 @@ import Stack from "react-bootstrap/Stack";
 import Container from "react-bootstrap/Container";
 import "../jobs.css";
 
+
 /**@TODO fix selection lagging */
 
 const Jobs = () => {
+
     const [allJobs, setAllJobs] = useState([]);
     const [title, setTitle] = useState("");
     const [endpoint, setEndpoint] = useState("");
@@ -84,5 +86,7 @@ const Jobs = () => {
             </Container>
         </div>
     );
+
+  
 };
 export default Jobs;
