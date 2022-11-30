@@ -47,8 +47,10 @@ function Profile() {
 
           </div>
         </div>
+        </div>
       </Container>
     </div>
+
   );
 }
 export default Profile;
