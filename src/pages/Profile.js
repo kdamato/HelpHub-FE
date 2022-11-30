@@ -6,13 +6,10 @@ import { setImageColor, createImageFromInitials } from "../components/Utilities"
 import { CurrentUser } from "../context/CurrentUser";
 import { useContext } from "react";
 
-
 function Profile() {
     const { currentUser } = useContext(CurrentUser);
-
     const name = currentUser.name;
     const imgSrc = "";
-
     const navigate = useNavigate();
 
     function clearStorage() {
@@ -27,8 +24,10 @@ function Profile() {
       <Container>
         <Stack gap={3}>
           <Navigation />
+          <ProfileTile/>
         </Stack>
     <div>
+
         <img
             className="profile_pic"
             id='preview'
@@ -45,6 +44,7 @@ function Profile() {
         <p>{currentUser.location}</p>
         <p>{currentUser.name}</p>
           <div class="form-group">
+
             <button onClick={clearStorage}>Log out</button>
           </div>
         </div>

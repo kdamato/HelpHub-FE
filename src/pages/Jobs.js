@@ -10,7 +10,6 @@ import { CurrentUser } from "../context/CurrentUser";
 import "../jobs.css";
 
 /**@TODO fix selection lagging */
-
 const Jobs = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUser);
