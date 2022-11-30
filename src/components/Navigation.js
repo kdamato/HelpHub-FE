@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { CurrentUser } from "../context/CurrentUser";
-import { setImageColor, createImageFromInitials } from "./Utilities"
+import { setImageColor, createImageFromInitials } from "./Utilities";
 
 
 function Navigation() {
@@ -13,19 +13,21 @@ function Navigation() {
     <>
       <Nav.Link href="/myjobs">My Listings</Nav.Link>
       <Navbar.Brand href="/profile">
-            <img
-              src={
-                imgSrc.length <= 0
-                ? createImageFromInitials(500, currentUser.name, setImageColor())
-                : imgSrc
-              }
-              alt='profile-pic'
-              width="50"
-              height="auto"
-              className="d-inline-block align-top"
-              id="nav_profile_pic"
-            />
-          </Navbar.Brand>
+
+        <img
+          src={
+            imgSrc.length <= 0
+              ? createImageFromInitials(500, currentUser.name, setImageColor())
+              : imgSrc
+          }
+          alt="profile-pic"
+          width="50"
+          height="auto"
+          className="d-inline-block align-top"
+          id="nav_profile_pic"
+        />
+      </Navbar.Brand>
+
     </>
   ) : (
     <>
