@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import Container from "react-bootstrap/Container";
+import { CurrentUser } from "../context/CurrentUser";
 import "../jobs.css";
 import { CurrentUser } from "../context/CurrentUser";
 
@@ -19,8 +20,8 @@ const Jobs = () => {
   const [endpoint, setEndpoint] = useState("");
   const [provider, setProvider] = useState({ provider: "" });
   let children;
-
   const url = `http://localhost:5050/jobs/` + endpoint;
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,5 +120,6 @@ const Jobs = () => {
       </Container>
     </div>
   );
+
 };
 export default Jobs;

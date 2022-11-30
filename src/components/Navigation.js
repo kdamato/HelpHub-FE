@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { CurrentUser } from "../context/CurrentUser";
 import { setImageColor, createImageFromInitials } from "./Utilities";
 
+
 function Navigation() {
   const { currentUser } = useContext(CurrentUser);
   const imgSrc = "";
@@ -12,6 +13,7 @@ function Navigation() {
     <>
       <Nav.Link href="/myjobs">My Listings</Nav.Link>
       <Navbar.Brand href="/profile">
+
         <img
           src={
             imgSrc.length <= 0
@@ -25,6 +27,7 @@ function Navigation() {
           id="nav_profile_pic"
         />
       </Navbar.Brand>
+
     </>
   ) : (
     <>

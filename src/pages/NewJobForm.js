@@ -13,6 +13,7 @@ import { CurrentUser } from "../context/CurrentUser";
 
 
 function NewJobForm(props) {
+
   const { currentUser } = useContext(CurrentUser);
   const navigate = useNavigate();
   /**
@@ -57,29 +58,31 @@ function NewJobForm(props) {
 
   };
 
-  return (
-    <div>
-      <Container>
-        <Stack gap={3}>
-          <Navigation />
-        </Stack>
-        <Form onSubmit={handleSubmit}>
-          <div className="Category Dropdown">
-            <Form.Select
-              aria-label="Category select"
-              name="category"
-              value={job.category}
-              onChange={(e) => {
-                setJob({ ...job, category: e.target.value });
-              }}
-            >
-              <option>Select Job Category</option>
-              <option value="petCare">Pet Care</option>
-              <option value="landscaping">Landscaping</option>
-              <option value="homeCleaning">Home Cleaning</option>
-              <option value="movingHelp">Help Moving</option>
-            </Form.Select>
-          </div>
+
+    return (
+        <div>
+            <Container>
+                <Stack gap={3}>
+                    <Navigation />
+                </Stack>
+                <Form onSubmit={handleSubmit}>
+                    <div className="Category Dropdown">
+                        <Form.Select
+                            aria-label="Category select"
+                            name="category"
+                            value={job.category}
+                            onChange={(e) => {
+                                setJob({ ...job, category: e.target.value });
+                            }}
+                        >
+                            <option>Select Job Category</option>
+                            <option value="petCare">Pet Care</option>
+                            <option value="landscaping">Landscaping</option>
+                            <option value="homeCleaning">Home Cleaning</option>
+                            <option value="movingHelp">Help Moving</option>
+                        </Form.Select>
+                    </div>
+
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Job Requested</Form.Label>
@@ -129,5 +132,6 @@ function NewJobForm(props) {
       </Container>
     </div>
   );
+
 }
 export default NewJobForm;
