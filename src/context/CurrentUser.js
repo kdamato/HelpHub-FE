@@ -3,8 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const CurrentUser = createContext();
 
 function CurrentUserProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState('');
-  console.log(currentUser);
+  const [currentUser, setCurrentUser] = useState("");
   useEffect(() => {
     const getLoggedInUser = async () => {
       let response = await fetch(
@@ -17,7 +16,6 @@ function CurrentUserProvider({ children }) {
       );
       let user = await response.json();
       setCurrentUser(user);
-      console.log(user);
     };
     getLoggedInUser();
   }, []);
