@@ -3,7 +3,7 @@ import JobCard from '../components/JobCard'
 import Navigation from '../components/Navigation'
 import { CurrentUser } from '../context/CurrentUser';
 import Stack from 'react-bootstrap/Stack'
-import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
 
 
 
@@ -37,14 +37,16 @@ const children = jobs.map((job)=>{
 )
   return (
     <div>
-        <div style={{marginBottom:'2rem'}}>
-            <Navigation/>
-        </div>
-        <div style={{overflowX: 'scroll', margin:'4rem'}}>
-            <Stack direction='horizontal' gap={3}>
-            {children}
-            </Stack>
-        </div>
+        <Container>
+        <Stack gap={3}>
+            <Navigation />
+        </Stack>
+            <div style={{overflowX: 'scroll', margin:'4rem'}}>
+                <Stack direction='horizontal' gap={3}>
+                {children}
+                </Stack>
+            </div>
+        </Container>
     </div>
   );
 }
