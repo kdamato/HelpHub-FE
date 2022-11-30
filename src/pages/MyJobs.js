@@ -4,55 +4,47 @@ import Navigation from "../components/Navigation";
 import { CurrentUser } from "../context/CurrentUser";
 import Stack from "react-bootstrap/Stack";
 import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
 
 function MyJobs() {
-  const { currentUser } = useContext(CurrentUser);
-  const [jobs, setJobs] = useState([]);
+    const { currentUser } = useContext(CurrentUser);
+    const [jobs, setJobs] = useState([]);
 
-  console.log(currentUser._id);
+    console.log(currentUser._id);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(
+                `http://localhost:5050/jobs/postedby/$%7BcurrentUser._id%7D%60`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            const resData = await response.json();
+            setJobs(resData);
+        };
+        fetchData();
+    }, [currentUser._id]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `http://localhost:5050/jobs/postedby/${currentUser._id}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const resData = await response.json();
-      setJobs(resData);
-    };
-    fetchData();
-  }, [currentUser._id]);
-
-  const children = jobs.map((job) => {
-    console.log(job);
+    const children = jobs.map((job) => {
+        console.log(job);
+        return <JobCard data={job} />;
+    });
     return (
-      <Card style={{ margin: "auto" }}>
-        <JobCard data={job} />
-      </Card>
+        <div>
+            <Container>
+                <Stack gap={3}>
+                    <Navigation />
+                </Stack>
+                <div style={{ overflowX: "scroll", margin: "4rem" }}>
+                    <Stack direction="horizontal" gap={3}>
+                        {children}
+                    </Stack>
+                </div>
+            </Container>
+        </div>
     );
-  });
-  return (
-    <div>
-      <div style={{ marginBottom: "2rem" }}>
-        <Container>
-          <Stack gap={3}>
-            <Navigation />
-          </Stack>
-        </Container>
-      </div>
-      <div style={{ marginBottom: "2rem" }}>
-        <Stack direction="horizontal" gap={3}>
-          {children}
-        </Stack>
-      </div>
-    </div>
-  );
 }
 
 export default MyJobs;
