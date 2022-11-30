@@ -1,0 +1,7 @@
+.jobChildren div {
+    display: inline-block;
+    margin: 2vh;
+}
+.category {
+    width: 35vw;
+}

@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { CurrentUser } from "../context/CurrentUser";
-
 import { useState, useContext, useEffect } from "react";
 import Chat from "./Chat";
 
@@ -79,5 +78,6 @@ function JobCard(props) {
     </div>
   );
 }
+
 
 export default JobCard;

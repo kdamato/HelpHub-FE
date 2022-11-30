@@ -40,7 +40,7 @@ function MyJobs() {
     };
     fetchData();
   }, [currentUser._id]);
-
+  
   const myJobs = jobs.map((job, i) => {
     // console.log(job);
     return <JobCard data={job} key={i} />;
@@ -67,6 +67,7 @@ function MyJobs() {
           {toDo}
         </Stack>
       </div>
+
     </div>
   );
 }

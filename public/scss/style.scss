@@ -33,6 +33,18 @@ a {
   width: 10em;
 }
 
+.error {
+  color: red;
+}
+
+.about_card {
+  display: inline-block;
+}
+
+#nav_profile_pic {
+  width: 1.6em;
+}
+
 .App {
 
   body {
@@ -48,7 +60,6 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
 
     ul {
       display: flex;

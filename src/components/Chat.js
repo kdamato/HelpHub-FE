@@ -106,6 +106,7 @@ function Chat(props) {
       </div>
     </div>
   );
+
 }
 
 export default Chat;

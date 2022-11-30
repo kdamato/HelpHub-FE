@@ -13,8 +13,8 @@
 }
 
 .btn-primary {
-  background-color: #fff89b;
-  color: text-color-picker(#fff89b);
+  background-color: #fdb931;
+  color: text-color-picker(#fdb931);
 }
 
 .btn-secondary {
@@ -36,7 +36,7 @@
 }
 
 html, body {
-  background-color: #fff568;
+  background-color: #f9a602;
   font-family: Trebuchet MS, Arial, sans-serif;
   line-height: 1;
 }
@@ -59,12 +59,24 @@ a {
   width: 10em;
 }
 
+.error {
+  color: red;
+}
+
+.about_card {
+  display: inline-block;
+}
+
+#nav_profile_pic {
+  width: 1.6em;
+}
+
 .App {
-  background-color: #fff568;
-  color: text-color-picker(#fff568);
+  background-color: #f9a602;
+  color: text-color-picker(#f9a602);
 }
 .App body {
-  background-color: #fff568;
+  background-color: #f9a602;
   font-family: Trebuchet MS, Arial, sans-serif;
   line-height: 1;
 }
@@ -72,7 +84,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
 }
 .App nav ul {
   display: flex;
@@ -84,7 +95,7 @@ a {
   background-color: #ffffff;
 }
 .App nav a {
-  color: text-color-picker(#fff568);
+  color: text-color-picker(#f9a602);
 }
 .App nav a:hover {
   color: purple;
