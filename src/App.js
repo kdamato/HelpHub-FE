@@ -12,6 +12,7 @@ import Profile from "./pages/Profile";
 import NewJobForm from "./pages/NewJobForm";
 
 function App() {
+  
   return (
     <CurrentUserProvider>
       <div className="App">

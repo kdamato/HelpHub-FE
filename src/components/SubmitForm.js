@@ -3,9 +3,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import { CurrentUser } from "../context/CurrentUser";
 
 function SubmitForm(props) {
@@ -33,6 +30,7 @@ function SubmitForm(props) {
             );
             const data = await response.json();
 
+
             if (response.status === 200) {
                 setCurrentUser(data.user);
                 localStorage.setItem("token", data.token);
@@ -42,6 +40,7 @@ function SubmitForm(props) {
                 console.log(errorMessage);
             }
         }
+
 
         //SIGNUP
         else if (props.route === "Sign Up") {
@@ -69,12 +68,14 @@ function SubmitForm(props) {
         }
     };
 
+
     //Update dropdown button display based on selection
     const [title, setTitle] = useState("User Type");
     const handleSelection = (event) => {
         event.preventDefault();
         setTitle(event.target.textContent);
     };
+
 
     return (
         <div>
@@ -99,6 +100,7 @@ function SubmitForm(props) {
                             Please enter your email here.
                         </Form.Text>
                     </Form.Group>
+
 
                     <Form.Group className="mb-3" controlId="formGroupPassword">
                         <Form.Label>Password</Form.Label>
@@ -135,5 +137,6 @@ function SubmitForm(props) {
             </Container>
         </div>
     );
+
 }
 export default SubmitForm;

@@ -5,11 +5,16 @@ import React, { useEffect, useState, useContext } from "react";
 import Form from "react-bootstrap/Form";
 import Stack from "react-bootstrap/Stack";
 import Container from "react-bootstrap/Container";
+
 import { CurrentUser } from "../context/CurrentUser";
+
+import "../jobs.css";
+
 
 /**@TODO fix selection lagging */
 
 const Jobs = () => {
+
     const { currentUser } = useContext(CurrentUser);
     const [allJobs, setAllJobs] = useState([]);
     const [title, setTitle] = useState("");
@@ -112,5 +117,6 @@ const Jobs = () => {
             </Container>
         </div>
     );
+
 };
 export default Jobs;

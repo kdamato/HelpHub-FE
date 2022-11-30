@@ -21,10 +21,11 @@ function About() {
         <Stack gap={3}>
           <Navigation />
         </Stack>
+        <br />
+      <div className="about_card">
         <Card style={{ width: '50rem' }}>
           <Card.Body>
             <Card.Title>About HelpHub</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
             <Card.Text>
               <p>This is the service where you can order one of our providers to do things such as landscaping, pet care, help with moving, and house cleaning.</p>
               <p>The process if you want to be a customer is simple. After you have created an account, do a search in your area, select someone and chat about a cost, offer it, and they’ll be on their way.</p>  
@@ -34,6 +35,7 @@ function About() {
             <Card.Link href="#">HelpHub contact email</Card.Link>
           </Card.Body>
         </Card>
+      </div>
         <Form onSubmit={handleSubmit}>
           <Button variant="primary" type="submit">
               Continue to site

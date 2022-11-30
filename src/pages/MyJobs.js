@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import { CurrentUser } from "../context/CurrentUser";
 import Stack from "react-bootstrap/Stack";
 import Container from "react-bootstrap/Container";
+
 import Card from "react-bootstrap/Card";
 
 function MyJobs() {
@@ -53,6 +54,7 @@ function MyJobs() {
       </div>
     </div>
   );
+
 }
 
 export default MyJobs;
