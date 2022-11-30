@@ -15,7 +15,7 @@ function JobCard(props) {
     if (props.data.provider) {
       const fetchProviderName = async () => {
         const response = await fetch(
-          `http://localhost:5050/memberaccounts/${props.data.provider}`
+          `${process.env.REACT_APP_API_URL}/memberaccounts/${props.data.provider}`
         );
         const data = await response.json();
         setProvider(data);

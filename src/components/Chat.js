@@ -14,7 +14,7 @@ function Chat(props) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `http://localhost:5050/chats/${props.room}`,
+        `${process.env.REACT_APP_API_URL}/chats/${props.room}`,
         {
           method: "GET",
           headers: {
@@ -42,7 +42,7 @@ function Chat(props) {
             new Date(Date.now()).getMinutes(),
         },
       };
-      await fetch(`http://localhost:5050/chats/${props.room}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/chats/${props.room}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

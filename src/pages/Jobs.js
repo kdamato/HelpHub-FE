@@ -18,7 +18,7 @@ const Jobs = () => {
   const [endpoint, setEndpoint] = useState("");
   const [provider, setProvider] = useState({ provider: "" });
   let children;
-  const url = `http://localhost:5050/jobs/` + endpoint;
+  const url = `${process.env.REACT_APP_API_URL}/jobs/` + endpoint;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +48,7 @@ const Jobs = () => {
   //Updates job provider to currently logged in user
   const handleRequestWork = async (job) => {
     try {
-      const response = await fetch(`http://localhost:5050/jobs/${job._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/jobs/${job._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -19,7 +19,7 @@ function SubmitForm(props) {
         if (props.route === "Log In") {
             e.preventDefault();
             const response = await fetch(
-                "http://localhost:5050/memberAccounts/login",
+                "${process.env.REACT_APP_API_URL}/memberAccounts/login",
                 {
                     method: "POST",
                     headers: {
@@ -46,7 +46,7 @@ function SubmitForm(props) {
         else if (props.route === "Sign Up") {
             e.preventDefault();
             const response = await fetch(
-                "http://localhost:5050/memberAccounts",
+                "${process.env.REACT_APP_API_URL}/memberAccounts",
                 {
                     method: "POST",
                     headers: {

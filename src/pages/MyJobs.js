@@ -15,7 +15,7 @@ function MyJobs() {
   useEffect(() => {
     const fetchData = async () => {
       const responseMyJobs = await fetch(
-        `http://localhost:5050/jobs/postedby/${currentUser._id}`,
+        `${process.env.REACT_APP_API_URL}/jobs/postedby/${currentUser._id}`,
         {
           method: "GET",
           headers: {
@@ -27,7 +27,7 @@ function MyJobs() {
       setJobs(resMyJobsData);
 
       const responseDoJobs = await fetch(
-        `http://localhost:5050/jobs/provider/${currentUser._id}`,
+        `${process.env.REACT_APP_API_URL}/jobs/provider/${currentUser._id}`,
         {
           method: "GET",
           headers: {
