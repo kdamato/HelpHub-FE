@@ -5,9 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 import { CurrentUser } from "../context/CurrentUser";
 import { setImageColor, createImageFromInitials } from "./Utilities"
 
+
 function Navigation() {
   const { currentUser } = useContext(CurrentUser);
-  const name = currentUser.name;
   const imgSrc = "";
   const loginActions = currentUser ? (
     <>
@@ -16,7 +16,7 @@ function Navigation() {
             <img
               src={
                 imgSrc.length <= 0
-                ? createImageFromInitials(500, name, setImageColor())
+                ? createImageFromInitials(500, currentUser.name, setImageColor())
                 : imgSrc
               }
               alt='profile-pic'
