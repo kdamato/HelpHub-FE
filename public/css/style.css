@@ -75,6 +75,11 @@ a {
   width: 20%;
 }
 
+img.card-image-bottom {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .App {
   background-color: #f9a602;
   color: text-color-picker(#f9a602);

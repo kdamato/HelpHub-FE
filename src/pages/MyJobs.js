@@ -54,13 +54,20 @@ function MyJobs() {
   return (
     <div>
         <Container>
-        <Stack gap={3}>
-            <Navigation />
-        </Stack>
-            <div style={{overflowX: 'scroll', margin:'4rem'}}>
-                <Stack direction='horizontal' gap={3}>
-                {children}
-                </Stack>
+            <Stack gap={3}>
+                <Navigation />
+            </Stack>
+            <div style={{ overflowX: "scroll", margin: "4rem" }}>
+            <h3>Jobs Created</h3>
+            <Stack direction="horizontal" gap={3}>
+                {myJobs}
+            </Stack>
+            </div>
+            <div style={{ overflowX: "scroll", margin: "4rem" }}>
+                <h3>Jobs To Complete</h3>
+            <Stack direction="horizontal" gap={3}>
+                {toDo}
+            </Stack>
             </div>
         </Container>
     </div>

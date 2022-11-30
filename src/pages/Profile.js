@@ -39,6 +39,7 @@ function Profile() {
             }
             alt='profile-pic'
         />
+        </div>
         <div className="top-Home-Page">
         <h2>About Me</h2>
         <p>{currentUser.name}</p>

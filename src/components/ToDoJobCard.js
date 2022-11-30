@@ -36,8 +36,7 @@ function ToDoJobCard(props) {
         </Card>
       ) : (
         <Card style={{ width: "20rem", height: "30rem" }}>
-          <Card.Img variant="bottom" src="holder.js/100px180" />
-          <div style={{ marginTop: "10rem" }}>
+          <Card.Img variant="bottom" style={{width:"70%", margin:"0 auto"}} src="https://previews.123rf.com/images/ratoca/ratoca1304/ratoca130400199/18967240-help-me-message.jpg" />
             <Card.Title>{props.data.name}</Card.Title>
             <Card.Body>
               <Card.Text>Category: {props.data.category}</Card.Text>
@@ -48,7 +47,6 @@ function ToDoJobCard(props) {
                 Chat
               </Button>
             </Card.Body>
-          </div>
         </Card>
       )}
     </div>
