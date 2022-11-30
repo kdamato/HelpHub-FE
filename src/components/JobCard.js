@@ -5,6 +5,7 @@ import { useState, useContext, useEffect } from "react";
 import Chat from "./Chat";
 
 function JobCard(props) {
+
   const [showChat, setShowChat] = useState(false);
   const [jobAccepted, setJobAccepted] = useState(false);
   const { currentUser } = useContext(CurrentUser);
@@ -50,7 +51,7 @@ function JobCard(props) {
         </Card>
       ) : (
         <Card style={{ width: "20rem", height: "30rem" }}>
-          <Card.Img variant="bottom" src="holder.js/100px180" />
+          <Card.Img variant="bottom" src="https://previews.123rf.com/images/ratoca/ratoca1304/ratoca130400199/18967240-help-me-message.jpg"" />
 
           <div style={{ marginTop: "10rem" }}>
             <Card.Title>{props.data.name}</Card.Title>

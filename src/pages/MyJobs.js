@@ -5,6 +5,7 @@ import { CurrentUser } from "../context/CurrentUser";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import ToDoJobCard from "../components/ToDoJobCard";
+import Container from 'react-bootstrap/Container'
 
 function MyJobs() {
   const { currentUser } = useContext(CurrentUser);
@@ -52,22 +53,16 @@ function MyJobs() {
 
   return (
     <div>
-      <div style={{ marginBottom: "2rem" }}>
-        <Navigation />
-      </div>
-      <div style={{ overflowX: "scroll", margin: "4rem" }}>
-        <h3>Jobs Created</h3>
-        <Stack direction="horizontal" gap={3}>
-          {myJobs}
+        <Container>
+        <Stack gap={3}>
+            <Navigation />
         </Stack>
-      </div>
-      <div style={{ overflowX: "scroll", margin: "4rem" }}>
-        <h3>Jobs To Complete</h3>
-        <Stack direction="horizontal" gap={3}>
-          {toDo}
-        </Stack>
-      </div>
-
+            <div style={{overflowX: 'scroll', margin:'4rem'}}>
+                <Stack direction='horizontal' gap={3}>
+                {children}
+                </Stack>
+            </div>
+        </Container>
     </div>
   );
 }

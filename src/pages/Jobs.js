@@ -69,7 +69,7 @@ const Jobs = () => {
         return (
           <div>
             <Card style={{ width: "18rem" }} key={`Card ${i}`}>
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src="https://previews.123rf.com/images/ratoca/ratoca1304/ratoca130400199/18967240-help-me-message.jpg" />
               <Card.Body>
                 <Card.Title>{job.name}</Card.Title>
                 <span className="category">

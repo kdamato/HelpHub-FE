@@ -37,16 +37,15 @@ function Profile() {
                 ? createImageFromInitials(500, name, setImageColor())
                 : imgSrc
             }
-            alt="profile-pic"
-          />
-          <div className="top-Home-Page">
-            <h2>About Me</h2>
-            <p>{currentUser.name}</p>
-            <p>{currentUser.location}</p>
-            <p>{currentUser.name}</p>
-            <div class="form-group">
-              <button onClick={clearStorage}>Log out</button>
-            </div>
+            alt='profile-pic'
+        />
+        <div className="top-Home-Page">
+        <h2>About Me</h2>
+        <p>{currentUser.name}</p>
+        <p>{currentUser.location}</p>
+        <p>{currentUser.email}</p>
+          <div class="form-group">
+            <button onClick={clearStorage}>Log out</button>
           </div>
         </div>
       </Container>

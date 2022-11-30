@@ -65,8 +65,10 @@ function NewJobForm(props) {
                 <Stack gap={3}>
                     <Navigation />
                 </Stack>
+                <br />
                 <Form onSubmit={handleSubmit}>
                     <div className="Category Dropdown">
+                    <Form.Label>Select Category</Form.Label>
                         <Form.Select
                             aria-label="Category select"
                             name="category"
@@ -115,6 +117,7 @@ function NewJobForm(props) {
               Please enter description of the job requested here.
             </Form.Text>
           </Form.Group>
+          <Form.Label>Select Location</Form.Label>
           <LocationDropdown job={job} setJob={setJob} />
           
           {/* <FileUpload /> */}
