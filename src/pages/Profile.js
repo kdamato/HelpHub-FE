@@ -2,25 +2,25 @@ import Container from "react-bootstrap/Container";
 import Navigation from "../components/Navigation";
 import Stack from "react-bootstrap/Stack";
 import { useNavigate } from "react-router-dom";
-import { setImageColor, createImageFromInitials } from "../components/Utilities"
+import {
+  setImageColor,
+  createImageFromInitials,
+} from "../components/Utilities";
 import { CurrentUser } from "../context/CurrentUser";
 import { useContext } from "react";
 
-
 function Profile() {
-    const { currentUser } = useContext(CurrentUser);
+  const { currentUser } = useContext(CurrentUser);
+  const name = currentUser.name;
+  const imgSrc = "";
+  const navigate = useNavigate();
 
-    const name = currentUser.name;
-    const imgSrc = "";
-
-    const navigate = useNavigate();
-
-    function clearStorage() {
-        // Clear localStorage token 
-        localStorage.clear();
-        navigate("/");
-        window.location.reload(false);
-      }
+  function clearStorage() {
+    // Clear localStorage token
+    localStorage.clear();
+    navigate("/");
+    window.location.reload(false);
+  }
 
   return (
     <div>
@@ -28,14 +28,14 @@ function Profile() {
         <Stack gap={3}>
           <Navigation />
         </Stack>
-    <div>
-        <img
+        <div>
+          <img
             className="profile_pic"
-            id='preview'
+            id="preview"
             src={
-                imgSrc.length <= 0
-                    ? createImageFromInitials(500, name, setImageColor())
-                    : imgSrc
+              imgSrc.length <= 0
+                ? createImageFromInitials(500, name, setImageColor())
+                : imgSrc
             }
             alt='profile-pic'
         />
@@ -48,11 +48,8 @@ function Profile() {
             <button onClick={clearStorage}>Log out</button>
           </div>
         </div>
-    </div>
       </Container>
     </div>
-
   );
-
 }
 export default Profile;
