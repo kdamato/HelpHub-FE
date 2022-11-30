@@ -3,9 +3,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import { CurrentUser } from "../context/CurrentUser";
 
 function SubmitForm(props) {
@@ -39,7 +36,6 @@ function SubmitForm(props) {
         navigate("/");
       } else {
         setErrorMessage(data.message);
-        console.log(errorMessage);
       }
     }
 
@@ -67,11 +63,15 @@ function SubmitForm(props) {
   };
 
   //Update dropdown button display based on selection
-  const [title, setTitle] = useState("User Type");
-  const handleSelection = (event) => {
-    event.preventDefault();
-    setTitle(event.target.textContent);
-  };
+  // const [title, setTitle] = useState("User Type");
+  // const handleSelection = (event) => {
+  //   event.preventDefault();
+  //   setTitle(event.target.textContent);
+  // };
+
+  const handleClick = () => {
+    setErrorMessage("Example error message!")
+  }
 
   return (
     <div>
@@ -106,22 +106,11 @@ function SubmitForm(props) {
                 setCredentials({ ...credentials, password: e.target.value });
               }}
             />
-            {/* <DropdownButton
-              as={ButtonGroup}
-              key={"Primary"}
-              id={`dropdown-Primarys-Primary`}
-              title={title}
-            >
-              <Dropdown.Item onClick={handleSelection}>
-                {" "}
-                Customer{" "}
-              </Dropdown.Item>
-              <Dropdown.Item onClick={handleSelection}> Helper </Dropdown.Item>
-            </DropdownButton> */}
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onClick={handleClick}>
             {props.route}
           </Button>
+          {errorMessage && <div className="error"> {errorMessage} </div>}
         </Form>
       </Container>
     </div>

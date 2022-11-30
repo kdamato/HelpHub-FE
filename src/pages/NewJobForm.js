@@ -2,16 +2,15 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Stack from "react-bootstrap/Stack";
 import { useState } from "react";
 import FileUpload from "../components/FileUpload";
 import LocationDropdown from "../components/LocationDropdown";
 import Navigation from "../components/Navigation";
+
 import { useContext } from "react";
 import { CurrentUser } from "../context/CurrentUser";
+
 
 function NewJobForm(props) {
   const { currentUser } = useContext(CurrentUser);
@@ -19,7 +18,15 @@ function NewJobForm(props) {
   /**
    * @TODO : possibly change name of usestate from job to data so it doesn't need to call two different (setState) in locationdropdown
    */
-  const [job, setJob] = useState({});
+
+  const [job, setJob] = useState({
+    name: "",
+    category: "",
+    location: "",
+    postedBy: "",
+    description: "",
+  });
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,12 +39,22 @@ function NewJobForm(props) {
         body: JSON.stringify(job),
       });
       const data = await response.json();
-      console.log(data);
       setJob(data);
+      console.log(data);
+
       navigate("/myjobs");
     } catch (error) {
       console.log(error);
     }
+
+  };
+
+  //Update dropdown button display based on selection
+  const [title, setTitle] = useState("Job Category");
+  const handleSelection = (event) => {
+    event.preventDefault();
+    setTitle(event.target.textContent);
+
   };
 
   return (
@@ -96,6 +113,7 @@ function NewJobForm(props) {
             </Form.Text>
           </Form.Group>
           <LocationDropdown job={job} setJob={setJob} />
+          
           {/* <FileUpload /> */}
           <Button
             variant="primary"
@@ -105,6 +123,7 @@ function NewJobForm(props) {
             }}
           >
             Submit
+
           </Button>
         </Form>
       </Container>
